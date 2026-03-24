@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Υπεύθυνος Βάρδιας Παραγωγής — Μανδρέκας ΑΕ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0f1f3d;
+      --navy-mid:    #162a52;
+      --navy-light:  #1e3a6e;
+      --navy-pale:   #eef2f9;
+      --orange:      #f26419;
+      --orange-dark: #d4530e;
+      --orange-pale: #fff3ec;
+      --white:       #ffffff;
+      --ink:         #0d1117;
+      --ink-soft:    #374151;
+      --ink-muted:   #6b7280;
+      --border:      #e5e9f0;
+      --bg:          #f7f8fc;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .nav-logo-mark {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800; color: var(--white);
+      letter-spacing: -0.5px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .nav-logo-text {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+
+    .nav-logo-name {
+      font-size: 15px; font-weight: 700; color: var(--navy); letter-spacing: 0.3px;
+    }
+
+    .nav-logo-sub {
+      font-size: 10px; font-weight: 500; color: var(--ink-muted);
+      letter-spacing: 1.5px; text-transform: uppercase;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+
+    .nav-tag {
+      font-size: 12px; font-weight: 500; color: var(--ink-muted);
+    }
+
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--orange); color: var(--white);
+      font-size: 13px; font-weight: 700;
+      padding: 10px 22px; border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 3px 12px rgba(242,100,25,0.3);
+    }
+
+    .nav-cta:hover { background: var(--orange-dark); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(242,100,25,0.35); }
+
+    /* ── HERO ── */
+    .hero-wrap {
+      background: var(--navy);
+      position: relative; overflow: hidden;
+    }
+
+    /* geometric background pattern */
+    .hero-wrap::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 70% 50%, rgba(242,100,25,0.08) 0%, transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(30,58,110,0.6) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-grid-lines {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero {
+      max-width: 1200px; margin: 0 auto;
+      padding: 130px 48px 90px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 72px; align-items: center;
+      position: relative; z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(242,100,25,0.15);
+      border: 1px solid rgba(242,100,25,0.3);
+      color: #ffb085;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.5s 0.1s forwards;
+    }
+
+    .badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--orange);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.4; transform:scale(0.7); }
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 5.5vw, 64px);
+      font-weight: 700; line-height: 1.08;
+      color: var(--white); letter-spacing: -0.5px;
+      margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+    }
+
+    .hero-title em { font-style: italic; color: #ffb085; }
+
+    .hero-sub {
+      font-size: 17px; font-weight: 300;
+      color: rgba(255,255,255,0.68);
+      max-width: 480px; line-height: 1.7;
+      margin-bottom: 36px;
+      opacity: 0; animation: fadeUp 0.6s 0.3s forwards;
+    }
+
+    .hero-pills {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 40px;
+      opacity: 0; animation: fadeUp 0.6s 0.4s forwards;
+    }
+
+    .pill {
+      display: flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.85);
+      font-size: 13px; font-weight: 500;
+      padding: 8px 14px; border-radius: 8px;
+    }
+
+    .hero-actions {
+      display: flex; align-items: center; gap: 20px;
+      opacity: 0; animation: fadeUp 0.6s 0.5s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--orange); color: var(--white);
+      font-size: 15px; font-weight: 700;
+      padding: 16px 36px; border-radius: 8px;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(242,100,25,0.4);
+    }
+
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(242,100,25,0.45); }
+
+    .btn-ghost {
+      font-size: 14px; font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none; transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: rgba(255,255,255,0.9); }
+
+    /* hero stats card */
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 32px;
+      backdrop-filter: blur(8px);
+      opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
+    }
+
+    .hcard-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 20px;
+    }
+
+    .hcard-row {
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .hcard-row:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .hcard-row:first-of-type { padding-top: 0; }
+
+    .hcard-key {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 4px;
+    }
+
+    .hcard-val { font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.3; }
+    .hcard-val .hi { color: #ffb085; }
+    .hcard-val .sub { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.45); display: block; margin-top: 2px; }
+
+    .hcard-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(242,100,25,0.18);
+      border: 1px solid rgba(242,100,25,0.3);
+      color: #ffb085; font-size: 12px; font-weight: 600;
+      padding: 7px 14px; border-radius: 100px; margin-top: 18px;
+    }
+
+    /* ── SECTION BASE ── */
+    .section-divider { border: none; border-top: 1px solid var(--border); }
+
+    .section-wrap { max-width: 1200px; margin: 0 auto; padding: 80px 48px; }
+
+    .section-eyebrow {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 700; line-height: 1.12; color: var(--ink);
+    }
+
+    .section-title em { font-style: italic; color: var(--navy); }
+
+    /* ── COMPANY STRIP ── */
+    .company-strip {
+      background: var(--navy-pale);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .company-strip .section-wrap {
+      padding: 40px 48px;
+      display: flex; align-items: center; gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .company-info { flex: 1; min-width: 260px; }
+
+    .company-info h3 {
+      font-size: 18px; font-weight: 700; color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .company-info p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+
+    .company-stats {
+      display: flex; gap: 40px; flex-wrap: wrap;
+    }
+
+    .co-stat { text-align: center; }
+
+    .co-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px; font-weight: 700; color: var(--navy);
+      line-height: 1;
+    }
+
+    .co-stat-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--ink-muted); margin-top: 4px;
+    }
+
+    /* ── TARGET ── */
+    .target-section { background: var(--white); }
+
+    .target-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+
+    .target-card {
+      border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 28px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      background: var(--white);
+    }
+
+    .target-card:hover {
+      border-color: var(--navy-light);
+      box-shadow: 0 8px 24px rgba(15,31,61,0.08);
+      transform: translateY(-3px);
+    }
+
+    .target-card-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: var(--navy-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 16px;
+    }
+
+    .target-card h4 { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+
+    .target-card p { font-size: 14px; color: var(--ink-muted); line-height: 1.6; }
+
+    .target-tag {
+      display: inline-block;
+      background: var(--orange-pale);
+      color: var(--orange-dark);
+      font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 100px; margin-top: 14px;
+    }
+
+    /* ── RESPONSIBILITIES ── */
+    .resp-section { background: var(--bg); }
+
+    .resp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+    .resp-item {
+      display: flex; gap: 16px; padding: 22px;
+      background: var(--white);
+      border: 1px solid var(--border); border-radius: 12px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .resp-item:hover { border-color: var(--navy-light); box-shadow: 0 4px 16px rgba(15,31,61,0.06); }
+
+    .resp-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-style: italic; font-weight: 700;
+      color: var(--navy-pale); line-height: 1; flex-shrink: 0; width: 32px;
+    }
+
+    .resp-content h4 { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 5px; }
+    .resp-content p { font-size: 13.5px; color: var(--ink-muted); line-height: 1.6; }
+
+    /* ── REQUIREMENTS ── */
+    .req-section {
+      background: var(--navy);
+    }
+
+    .req-section .section-title { color: var(--white); }
+    .req-section .section-eyebrow { color: #ffb085; }
+
+    .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+    .req-group-title {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: #ffb085; margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .req-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .req-list li {
+      display: flex; gap: 12px;
+      font-size: 15px; color: rgba(255,255,255,0.82); align-items: flex-start;
+    }
+
+    .chk {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px; font-size: 10px; color: #fff;
+    }
+
+    .dsh {
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+      font-size: 12px; color: rgba(255,255,255,0.3);
+    }
+
+    /* ── PACKAGE INFOGRAPHIC ── */
+    .package-section { background: var(--white); }
+
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .pkg-item {
+      background: var(--white);
+      padding: 36px 28px;
+      display: flex; flex-direction: column; align-items: flex-start;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .pkg-item:hover { background: var(--navy-pale); }
+
+    .pkg-item::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--navy);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .pkg-item:hover::after { transform: scaleX(1); }
+
+    .pkg-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--navy-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 16px;
+    }
+
+    .pkg-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--ink-muted); margin-bottom: 6px;
+    }
+
+    .pkg-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 700; color: var(--navy);
+      line-height: 1.1; margin-bottom: 6px;
+    }
+
+    .pkg-value .unit { font-size: 14px; font-weight: 400; font-family: 'Plus Jakarta Sans', sans-serif; color: var(--ink-muted); }
+
+    .pkg-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.55; }
+
+    .pkg-highlight {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: var(--orange-pale);
+      color: var(--orange-dark);
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 100px;
+      margin-top: 10px;
+    }
+
+    /* ── APPLY ── */
+    .apply-section { background: var(--bg); }
+
+    .apply-wrap {
+      display: grid; grid-template-columns: 1fr 560px; gap: 64px; align-items: start;
+    }
+
+    .apply-intro .section-title { margin-bottom: 16px; }
+
+    .apply-intro p { font-size: 15px; color: var(--ink-soft); margin-bottom: 10px; }
+
+    .apply-note {
+      display: flex; gap: 12px;
+      background: var(--navy-pale);
+      border: 1px solid rgba(15,31,61,0.12);
+      border-radius: 10px; padding: 16px 18px;
+      margin-top: 28px;
+      font-size: 13.5px; color: var(--navy-mid); line-height: 1.55;
+    }
+
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 40px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    }
+
+    .form-card-title {
+      font-size: 17px; font-weight: 700; color: var(--ink);
+      margin-bottom: 28px; padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .form-fields { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .field { display: flex; flex-direction: column; gap: 5px; }
+
+    .field label { font-size: 12px; font-weight: 600; color: var(--ink-soft); }
+
+    .field input, .field textarea, .field select {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px; padding: 11px 14px; border-radius: 8px;
+      outline: none; width: 100%; -webkit-appearance: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .field input:focus, .field textarea:focus, .field select:focus {
+      border-color: var(--navy); box-shadow: 0 0 0 3px rgba(15,31,61,0.07);
+      background: var(--white);
+    }
+
+    .field input::placeholder, .field textarea::placeholder { color: #b5bfbb; }
+
+    .field textarea { resize: vertical; min-height: 76px; }
+
+    .cv-drop {
+      border: 2px dashed var(--border);
+      background: var(--bg); border-radius: 10px;
+      padding: 24px 20px; text-align: center; cursor: pointer;
+      transition: border-color 0.2s, background 0.2s; position: relative;
+    }
+
+    .cv-drop:hover, .cv-drop.drag-over {
+      border-color: var(--navy); background: var(--navy-pale);
+    }
+
+    .cv-drop input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+
+    .cv-drop-icon {
+      width: 40px; height: 40px; background: var(--navy-pale);
+      border-radius: 8px; display: flex; align-items: center;
+      justify-content: center; font-size: 18px; margin: 0 auto 10px;
+    }
+
+    .cv-drop p { font-size: 13px; color: var(--ink-muted); }
+    .cv-drop strong { color: var(--navy); font-weight: 600; }
+    .cv-filename { margin-top: 8px; font-size: 13px; color: var(--navy); font-weight: 600; display: none; }
+
+    .submit-btn {
+      width: 100%; background: var(--orange); color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px; font-weight: 700;
+      padding: 16px; border-radius: 8px; border: none; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(242,100,25,0.3);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+
+    .submit-btn:hover { background: var(--orange-dark); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(242,100,25,0.35); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .form-privacy {
+      font-size: 12px; color: var(--ink-muted); margin-top: 10px;
+      display: flex; gap: 7px; line-height: 1.5;
+    }
+
+    .form-privacy::before { content: '🔒'; flex-shrink: 0; }
+
+    .form-success { display: none; text-align: center; padding: 48px 24px; }
+
+    .success-circle {
+      width: 60px; height: 60px; background: var(--orange-pale);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 26px; color: var(--orange); margin: 0 auto 18px;
+    }
+
+    .form-success h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-weight: 700; color: var(--ink); margin-bottom: 10px;
+    }
+
+    .form-success p { font-size: 14.5px; color: var(--ink-muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 32px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+
+    .footer-brand {
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .footer-logo-mark {
+      width: 30px; height: 30px; border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; color: var(--white);
+    }
+
+    .footer-brand-name { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); }
+
+    .footer-text { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    /* ── SOURCE BADGE ── */
+    #source-badge {
+      position: fixed; bottom: 16px; right: 16px;
+      background: var(--orange); color: var(--white);
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 6px; display: none; z-index: 999;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-tag { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 110px 24px 72px; gap: 40px; }
+      .hero-card { display: none; }
+      .section-wrap { padding: 60px 24px; }
+      .company-strip .section-wrap { padding: 32px 24px; gap: 28px; }
+      .target-grid, .pkg-grid { grid-template-columns: 1fr 1fr; }
+      .resp-grid { grid-template-columns: 1fr; }
+      .req-grid { grid-template-columns: 1fr; gap: 36px; }
+      .apply-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 24px; flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 560px) {
+      .target-grid, .pkg-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 24px 18px; }
+      .company-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-mark">Μ</div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Μανδρέκας ΑΕ</span>
+      <span class="nav-logo-sub">Γαλακτοκομικά · Κόρινθος</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-tag">Ανοιχτή Θέση</span>
+    <a href="#apply" class="nav-cta">Υποβολή Αίτησης →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero-grid-lines"></div>
+  <div class="hero">
+    <div>
+      <div class="hero-badge"><span class="badge-dot"></span>Άμεση Πρόσληψη · Μόνιμη Θέση</div>
+      <h1 class="hero-title">Υπεύθυνος<br>Βάρδιας <em>Παραγωγής</em></h1>
+      <p class="hero-sub">Αναλαμβάνετε τη διοίκηση βάρδιας σε σύγχρονη γραμμή γαλακτοκομικής παραγωγής. Ηγείστε ομάδας, εφαρμόζετε standards ποιότητας και αναπτύσσεστε σε ένα δομημένο, αξιόπιστο περιβάλλον.</p>
+      <div class="hero-pills">
+        <div class="pill">🕕 06:00–14:00 / 14:00–22:00</div>
+        <div class="pill">📍 Κόρινθος</div>
+        <div class="pill">📄 Μόνιμη Σύμβαση</div>
+        <div class="pill">💶 1.300–1.500€ καθαρά</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#apply" class="btn-primary">Υποβολή Αίτησης →</a>
+        <a href="#role" class="btn-ghost">↓ Δείτε τη θέση</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hcard-label">Σύνοψη Θέσης</div>
+      <div class="hcard-row">
+        <div class="hcard-key">Μισθός</div>
+        <div class="hcard-val"><span class="hi">1.300€ – 1.500€</span><span class="sub">καθαρά / μήνα</span></div>
+      </div>
+      <div class="hcard-row">
+        <div class="hcard-key">Ωράριο</div>
+        <div class="hcard-val">Δευτέρα – Παρασκευή<span class="sub">Πρωινή & Απογευματινή Βάρδια</span></div>
+      </div>
+      <div class="hcard-row">
+        <div class="hcard-key">Σάββατα</div>
+        <div class="hcard-val"><span class="hi">Αμειβόμενα</span> εφόσον χρειαστεί</div>
+      </div>
+      <div class="hcard-row">
+        <div class="hcard-key">Ασφάλεια Υγείας</div>
+        <div class="hcard-val"><span class="hi">Ιδιωτική</span> ομαδική ασφάλεια</div>
+      </div>
+      <div class="hcard-row">
+        <div class="hcard-key">Τοποθεσία</div>
+        <div class="hcard-val">Κόρινθος</div>
+      </div>
+      <div class="hcard-badge">✓ Σύμβαση Αορίστου Χρόνου</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPANY STRIP -->
+<div class="company-strip">
+  <div class="section-wrap">
+    <div class="company-info">
+      <h3>Μανδρέκας ΑΕ — Φρέσκα Γαλακτοκομικά Προϊόντα</h3>
+      <p>Οικογενειακή ελληνική εταιρεία με έδρα την Κόρινθο. Παράγουμε και διανέμουμε φρέσκα γαλακτοκομικά προϊόντα υψηλής ποιότητας σε όλη την Ελλάδα, με αμετακίνητη δέσμευση στη φρεσκάδα, την ποιότητα και τον άνθρωπο.</p>
+    </div>
+    <div class="company-stats">
+      <div class="co-stat">
+        <div class="co-stat-num">1948</div>
+        <div class="co-stat-label">Ίδρυση</div>
+      </div>
+      <div class="co-stat">
+        <div class="co-stat-num">75+</div>
+        <div class="co-stat-label">Χρόνια</div>
+      </div>
+      <div class="co-stat">
+        <div class="co-stat-num">🥛</div>
+        <div class="co-stat-label">Γαλακτοκομικά</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- TARGET -->
+<section class="target-section" id="role">
+  <div class="section-wrap">
+    <div class="section-header fade-in" style="margin-bottom:40px;">
+      <div class="section-eyebrow">Ιδανικό Προφίλ</div>
+      <h2 class="section-title">Αυτή η θέση <em>απευθύνεται</em> σε:</h2>
+    </div>
+    <div class="target-grid">
+      <div class="target-card fade-in">
+        <div class="target-card-icon">⚙️</div>
+        <h4>Μηχανικούς & Τεχνολόγους</h4>
+        <p>Μηχανολόγοι, χημικοί μηχανικοί ή μηχανικοί παραγωγής που θέλουν να εφαρμόσουν αναλυτική σκέψη σε πραγματικό παραγωγικό περιβάλλον.</p>
+        <span class="target-tag">✓ Πρώτη προτεραιότητα</span>
+      </div>
+      <div class="target-card fade-in">
+        <div class="target-card-icon">🎓</div>
+        <h4>Τεχνολόγους Τροφίμων</h4>
+        <p>Πτυχιούχοι τεχνολογίας τροφίμων που αναζητούν θέση με ουσιαστική ευθύνη, κοντά σε HACCP, ποιότητα και διαδικασίες παραγωγής.</p>
+        <span class="target-tag">✓ Εξαιρετική εφαρμογή</span>
+      </div>
+      <div class="target-card fade-in">
+        <div class="target-card-icon">🏭</div>
+        <h4>Αποφοίτους Τεχνικών Σχολών</h4>
+        <p>ΙΕΚ, ΕΠΑ.Λ ή άλλη τεχνική κατάρτιση με εμπειρία στην παραγωγή. Η πρακτική εμπειρία και η αναλυτική νοοτροπία εκτιμώνται εξίσου.</p>
+        <span class="target-tag">✓ Εμπειρία = Αξία</span>
+      </div>
+    </div>
+    <div style="margin-top:24px; padding:20px 24px; background:var(--navy-pale); border-radius:10px; border-left:3px solid var(--navy); font-size:14px; color:var(--ink-soft);">
+      💡 <strong>Τι μετράει περισσότερο:</strong> Αναζητούμε άτομα με <strong>process-oriented και αναλυτική σκέψη</strong> — που βλέπουν ένα πρόβλημα στη γραμμή και θέλουν να καταλάβουν το γιατί και να το λύσουν συστηματικά.
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- RESPONSIBILITIES -->
+<section class="resp-section">
+  <div class="section-wrap">
+    <div class="section-header fade-in" style="margin-bottom:40px;">
+      <div class="section-eyebrow">Καθημερινά</div>
+      <h2 class="section-title">Τι θα κάνετε <em>στη δουλειά σας</em></h2>
+    </div>
+    <div class="resp-grid">
+      <div class="resp-item fade-in">
+        <div class="resp-num">01</div>
+        <div class="resp-content">
+          <h4>Ηγεσία Βάρδιας</h4>
+          <p>Εποπτεία ομάδας παραγωγής, διαχείριση παρουσιών και επίλυση θεμάτων στη γραμμή κατά τη διάρκεια της βάρδιάς σας.</p>
+        </div>
+      </div>
+      <div class="resp-item fade-in">
+        <div class="resp-num">02</div>
+        <div class="resp-content">
+          <h4>Παραγωγή & Στόχοι</h4>
+          <p>Τήρηση προγράμματος παραγωγής, παρακολούθηση KPIs και άμεση αντιμετώπιση αποκλίσεων από τους στόχους.</p>
+        </div>
+      </div>
+      <div class="resp-item fade-in">
+        <div class="resp-num">03</div>
+        <div class="resp-content">
+          <h4>Ποιότητα & HACCP</h4>
+          <p>Εφαρμογή προτύπων ποιότητας γαλακτοκομικών, τήρηση SOPs, κανονισμών υγιεινής και ασφάλειας τροφίμων.</p>
+        </div>
+      </div>
+      <div class="resp-item fade-in">
+        <div class="resp-num">04</div>
+        <div class="resp-content">
+          <h4>Αναφορά Βάρδιας</h4>
+          <p>Δομημένη καταγραφή αποτελεσμάτων, χρόνων διακοπής και σαφής ενημέρωση της επόμενης βάρδιας.</p>
+        </div>
+      </div>
+      <div class="resp-item fade-in">
+        <div class="resp-num">05</div>
+        <div class="resp-content">
+          <h4>Συνεχής Βελτίωση</h4>
+          <p>Εντοπισμός αναποτελεσματικών σημείων στη γραμμή, πρόταση λύσεων και συμμετοχή σε δράσεις βελτίωσης διαδικασιών.</p>
+        </div>
+      </div>
+      <div class="resp-item fade-in">
+        <div class="resp-num">06</div>
+        <div class="resp-content">
+          <h4>Εκπαίδευση Ομάδας</h4>
+          <p>On-the-job εκπαίδευση νέων εργαζομένων και ανάδειξη αναγκών ανάπτυξης δεξιοτήτων στη διοίκηση.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="req-section">
+  <div class="section-wrap">
+    <div class="section-header fade-in" style="margin-bottom:40px;">
+      <div class="section-eyebrow">Τι Ζητούμε</div>
+      <h2 class="section-title">Προσόντα & Δεξιότητες</h2>
+    </div>
+    <div class="req-grid fade-in">
+      <div>
+        <div class="req-group-title">Απαραίτητα</div>
+        <ul class="req-list">
+          <li><span class="chk">✓</span>Τεχνικό υπόβαθρο ή εμπειρία σε εποπτεία παραγωγής / μεταποίησης</li>
+          <li><span class="chk">✓</span>Αναλυτική σκέψη και process-oriented νοοτροπία</li>
+          <li><span class="chk">✓</span>Ικανότητα ηγεσίας, οργάνωσης και παρακίνησης ομάδας</li>
+          <li><span class="chk">✓</span>Διαθεσιμότητα για βάρδιες Δευτέρα–Παρασκευή (πρωί & απόγευμα)</li>
+          <li><span class="chk">✓</span>Γνώση κανόνων υγιεινής & ασφάλειας σε χώρο τροφίμων</li>
+          <li><span class="chk">✓</span>Σαφής επικοινωνία — γραπτή και προφορική</li>
+        </ul>
+      </div>
+      <div>
+        <div class="req-group-title">Επιθυμητά (όχι υποχρεωτικά)</div>
+        <ul class="req-list">
+          <li><span class="dsh">+</span>Πτυχίο Μηχανολογίας, Τεχνολογίας Τροφίμων ή Χημικής Μηχανικής</li>
+          <li><span class="dsh">+</span>Γνώση HACCP ή ISO 22000 / συστημάτων ποιότητας τροφίμων</li>
+          <li><span class="dsh">+</span>Εμπειρία σε γαλακτοκομική ή βιομηχανία τροφίμων</li>
+          <li><span class="dsh">+</span>Εξοικείωση με lean manufacturing ή συνεχή βελτίωση (CI)</li>
+          <li><span class="dsh">+</span>Γνώση ERP ή συστημάτων διαχείρισης παραγωγής</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGE INFOGRAPHIC -->
+<section class="package-section">
+  <div class="section-wrap">
+    <div class="section-header fade-in" style="margin-bottom:40px;">
+      <div class="section-eyebrow">Αποδοχές & Παροχές</div>
+      <h2 class="section-title">Το <em>πακέτο</em> σας</h2>
+    </div>
+    <div class="pkg-grid fade-in">
+      <div class="pkg-item">
+        <div class="pkg-icon">💶</div>
+        <div class="pkg-label">Μηνιαίες Αποδοχές</div>
+        <div class="pkg-value">1.300–1.500 <span class="unit">€ καθαρά</span></div>
+        <div class="pkg-desc">Ανάλογα εμπειρίας και προσόντων. Αξιολόγηση στη συνέντευξη.</div>
+        <div class="pkg-highlight">💰 Καθαρές απολαβές</div>
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon">📅</div>
+        <div class="pkg-label">Εργάσιμες Ημέρες</div>
+        <div class="pkg-value">Δευτ–Παρ <span class="unit">+ Σάββατα αμειβόμενα</span></div>
+        <div class="pkg-desc">Σταθερό πρόγραμμα. Τα Σάββατα εργάζονται μόνο εφόσον υπάρχει παραγωγική ανάγκη και αμείβονται πλήρως.</div>
+        <div class="pkg-highlight">✓ Σάββατα πληρώνονται extra</div>
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon">🏥</div>
+        <div class="pkg-label">Ασφάλεια Υγείας</div>
+        <div class="pkg-value">Ιδιωτική <span class="unit">ομαδική ασφάλεια</span></div>
+        <div class="pkg-desc">Πρόσβαση σε ιδιωτικές υπηρεσίες υγείας χωρίς επιπλέον κόστος για τον εργαζόμενο.</div>
+        <div class="pkg-highlight">🏥 Χωρίς επιπλέον κόστος</div>
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon">📋</div>
+        <div class="pkg-label">Σύμβαση</div>
+        <div class="pkg-value">Αόριστου <span class="unit">χρόνου</span></div>
+        <div class="pkg-desc">Μόνιμη απασχόληση σε καθιερωμένη εταιρεία με 75+ χρόνια παρουσίας στην αγορά.</div>
+        <div class="pkg-highlight">✓ Πλήρης ασφάλεια εργασίας</div>
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon">📈</div>
+        <div class="pkg-label">Εξέλιξη</div>
+        <div class="pkg-value">Σαφής <span class="unit">πορεία ανάπτυξης</span></div>
+        <div class="pkg-desc">Δομημένη πορεία εξέλιξης για στελέχη που αποδεικνύουν αξία εντός της εταιρείας.</div>
+        <div class="pkg-highlight">↑ Ανοιχτά μονοπάτια εξέλιξης</div>
+      </div>
+      <div class="pkg-item">
+        <div class="pkg-icon">🕐</div>
+        <div class="pkg-label">Βάρδιες</div>
+        <div class="pkg-value">8ωρες <span class="unit">προβλέψιμες</span></div>
+        <div class="pkg-desc">06:00–14:00 ή 14:00–22:00. Σταθερό ωράριο χωρίς αιφνίδιες αλλαγές.</div>
+        <div class="pkg-highlight">🕐 Χωρίς αιφνιδιασμούς</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section class="apply-section" id="apply">
+  <div class="section-wrap">
+    <div class="apply-wrap">
+      <div class="apply-intro fade-in">
+        <div class="section-eyebrow">Υποβολή Αίτησης</div>
+        <h2 class="section-title" style="margin-bottom:16px;">Έτοιμοι να<br><em>ξεκινήσετε;</em></h2>
+        <p>Συμπληρώστε τη φόρμα και επισυνάψτε το βιογραφικό σας. Εξετάζουμε κάθε αίτηση προσωπικά.</p>
+        <p>Στόχος μας είναι να απαντάμε εντός <strong>5 εργάσιμων ημερών</strong>.</p>
+        <div class="apply-note">
+          <span>🏢</span>
+          <span>Η θέση ανήκει στη <strong>Μανδρέκας ΑΕ</strong>, μια από τις παλαιότερες γαλακτοκομικές εταιρείες της Ελλάδας με έδρα την Κόρινθο. Περισσότερες πληροφορίες στη συνέντευξη.</span>
+        </div>
+      </div>
+
+      <div class="form-card fade-in">
+        <div class="form-card-title">Στοιχεία Υποψηφίου</div>
+        <form class="form-fields" id="applyForm" novalidate name="application" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="application">
+          <p style="display:none;"><label>Μην το συμπληρώσετε: <input name="bot-field"></label></p>
+          <input type="hidden" id="utm_source" name="utm_source" value="">
+          <input type="hidden" id="utm_medium" name="utm_medium" value="">
+          <input type="hidden" id="utm_campaign" name="utm_campaign" value="">
+
+          <div class="form-row">
+            <div class="field">
+              <label for="first_name">Όνομα *</label>
+              <input type="text" id="first_name" name="first_name" required placeholder="π.χ. Νίκος">
+            </div>
+            <div class="field">
+              <label for="last_name">Επώνυμο *</label>
+              <input type="text" id="last_name" name="last_name" required placeholder="π.χ. Παπαδόπουλος">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="email@example.com">
+          </div>
+
+          <div class="field">
+            <label for="phone">Τηλέφωνο *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="69X XXX XXXX">
+          </div>
+
+          <div class="field">
+            <label for="background">Σπουδές / Τεχνικό Υπόβαθρο *</label>
+            <select id="background" name="background" required>
+              <option value="" disabled selected>Επιλέξτε κατηγορία</option>
+              <option value="mechanical-eng">Μηχανολόγος Μηχανικός</option>
+              <option value="chemical-eng">Χημικός Μηχανικός / Μηχανικός Παραγωγής</option>
+              <option value="other-eng">Άλλη Σχολή Μηχανικών (Engineering)</option>
+              <option value="food-tech">Τεχνολογία Τροφίμων</option>
+              <option value="vocational">Τεχνική Σχολή (ΕΠΑ.Λ / ΙΕΚ)</option>
+              <option value="production-exp">Εμπειρία Παραγωγής (χωρίς τυπικό πτυχίο)</option>
+              <option value="other">Άλλο</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="experience">Χρόνια Εμπειρίας σε Εποπτεία / Παραγωγή *</label>
+            <select id="experience" name="experience" required>
+              <option value="" disabled selected>Επιλέξτε εύρος</option>
+              <option value="0-1">Λιγότερο από 1 χρόνο</option>
+              <option value="1-3">1–3 χρόνια</option>
+              <option value="3-5">3–5 χρόνια</option>
+              <option value="5+">5+ χρόνια</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="notice">Διαθεσιμότητα Έναρξης</label>
+            <select id="notice" name="notice">
+              <option value="" disabled selected>Πότε μπορείτε να ξεκινήσετε;</option>
+              <option value="immediate">Άμεσα</option>
+              <option value="1week">Σε 1 εβδομάδα</option>
+              <option value="2weeks">Σε 2 εβδομάδες</option>
+              <option value="1month">Σε 1 μήνα</option>
+              <option value="2months+">Σε 2+ μήνες</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Κάτι παραπάνω; (προαιρετικό)</label>
+            <textarea id="message" name="message" placeholder="Λίγα λόγια για την εμπειρία σας ή γιατί σας ενδιαφέρει αυτή η θέση…"></textarea>
+          </div>
+
+          <div class="field">
+            <label>Βιογραφικό Σημείωμα *</label>
+            <div class="cv-drop" id="cvDropZone">
+              <input type="file" id="cv_file" name="cv_file" accept=".pdf,.doc,.docx" required>
+              <div class="cv-drop-icon">📄</div>
+              <p><strong>Κλικ για ανέβασμα</strong> ή σύρετε το αρχείο εδώ</p>
+              <p style="margin-top:3px; font-size:12px;">PDF, DOC ή DOCX · Μέγ. 5MB</p>
+              <div class="cv-filename" id="cvFileName"></div>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">Υποβολή Αίτησης →</button>
+          <p class="form-privacy">Τα στοιχεία σας χρησιμοποιούνται αποκλειστικά για την αξιολόγηση της αίτησής σας από τη Μανδρέκας ΑΕ.</p>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="success-circle">✓</div>
+          <h3>Η αίτησή σας παρελήφθη!</h3>
+          <p>Ευχαριστούμε για το ενδιαφέρον σας. Θα εξετάσουμε το βιογραφικό σας και θα επικοινωνήσουμε εντός 5 εργάσιμων ημερών.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo-mark">Μ</div>
+    <span class="footer-brand-name">Μανδρέκας ΑΕ · Κόρινθος</span>
+  </div>
+  <span class="footer-text">mandrekas.gr · Φρέσκα Γαλακτοκομικά Προϊόντα από το 1948</span>
+</footer>
+
+<div id="source-badge"></div>
+
+<script>
+  // UTM TRACKING
+  (function() {
+    const p   = new URLSearchParams(window.location.search);
+    const src = p.get('utm_source')   || 'direct';
+    const med = p.get('utm_medium')   || '';
+    const cmp = p.get('utm_campaign') || '';
+    document.getElementById('utm_source').value   = src;
+    document.getElementById('utm_medium').value   = med;
+    document.getElementById('utm_campaign').value = cmp;
+    sessionStorage.setItem('utm_source', src);
+    sessionStorage.setItem('utm_medium', med);
+    sessionStorage.setItem('utm_campaign', cmp);
+    const b = document.getElementById('source-badge');
+    if (src !== 'direct') { b.textContent = 'Πηγή: ' + src; b.style.display = 'block'; }
+  })();
+
+  // CV UPLOAD
+  const cvInput = document.getElementById('cv_file');
+  const cvName  = document.getElementById('cvFileName');
+  const drop    = document.getElementById('cvDropZone');
+
+  cvInput.addEventListener('change', () => {
+    if (cvInput.files.length) { cvName.textContent = '✓ ' + cvInput.files[0].name; cvName.style.display = 'block'; }
+  });
+  drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('drag-over'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('drag-over'));
+  drop.addEventListener('drop', e => {
+    e.preventDefault(); drop.classList.remove('drag-over');
+    if (e.dataTransfer.files.length) {
+      cvInput.files = e.dataTransfer.files;
+      cvName.textContent = '✓ ' + e.dataTransfer.files[0].name;
+      cvName.style.display = 'block';
+    }
+  });
+
+  // FORM SUBMIT — Netlify Forms
+  document.getElementById('applyForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn  = document.getElementById('submitBtn');
+    let valid  = true;
+
+    form.querySelectorAll('[required]').forEach(f => {
+      if (f.type !== 'file' && !f.value.trim()) { f.style.borderColor = '#ef4444'; valid = false; }
+      else if (f.type === 'file' && !f.files.length) { drop.style.borderColor = '#ef4444'; valid = false; }
+      else { f.style.borderColor = ''; }
+    });
+    if (!valid) return;
+
+    btn.disabled = true; btn.textContent = 'Αποστολή…';
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        body: new FormData(form)
+      });
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Υποβολή Αίτησης →';
+      alert('Σφάλμα κατά την αποστολή. Παρακαλώ δοκιμάστε ξανά.');
+    }
+  });
+
+  // SCROLL FADE
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
