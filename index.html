@@ -4,6 +4,40 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Υπεύθυνος Βάρδιας Παραγωγής — Μανδρέκας ΑΕ</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7Z97NS0GFN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7Z97NS0GFN', { send_page_view: true });
+
+    // Scroll depth tracking
+    (function(){
+      var depths = [25, 50, 75, 90], fired = {};
+      window.addEventListener('scroll', function(){
+        var pct = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
+        depths.forEach(function(d){
+          if(pct >= d && !fired[d]){ fired[d]=true; gtag('event','scroll_depth',{depth_percentage:d}); }
+        });
+      }, {passive:true});
+    })();
+
+    // CTA button click tracking
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('a[href*="apply"],button,a.btn,.btn-primary,.cta').forEach(function(el){
+        el.addEventListener('click', function(){
+          gtag('event','cta_click',{element_text: el.innerText.trim().substring(0,50)});
+        });
+      });
+      // Form submission tracking
+      document.querySelectorAll('form').forEach(function(form){
+        form.addEventListener('submit', function(){
+          gtag('event','form_submit',{form_id: form.id || form.name || 'application_form'});
+        });
+      });
+    });
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
   <style>
@@ -47,15 +81,29 @@
     }
 
     .nav-logo {
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
+      display: flex; align-items: center; gap: 12px;
     }
 
-    .nav-logo img {
-      display: block;
-      width: 150px;
-      height: auto;
+    .nav-logo-mark {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800; color: var(--white);
+      letter-spacing: -0.5px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .nav-logo-text {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+
+    .nav-logo-name {
+      font-size: 15px; font-weight: 700; color: var(--navy); letter-spacing: 0.3px;
+    }
+
+    .nav-logo-sub {
+      font-size: 10px; font-weight: 500; color: var(--ink-muted);
+      letter-spacing: 1.5px; text-transform: uppercase;
     }
 
     .nav-right { display: flex; align-items: center; gap: 20px; }
@@ -645,9 +693,13 @@
 
 <!-- NAV -->
 <nav>
-  <a href="https://www.mandrekas.gr" class="nav-logo" target="_blank" rel="noopener noreferrer">
-    <img src="logo_nav.png" alt="Μανδρέκας ΑΕ">
-  </a>
+  <div class="nav-logo">
+    <div class="nav-logo-mark">Μ</div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Μανδρέκας ΑΕ</span>
+      <span class="nav-logo-sub">Γαλακτοκομικά · Κόρινθος</span>
+    </div>
+  </div>
   <div class="nav-right">
     <span class="nav-tag">Ανοιχτή Θέση</span>
     <a href="#apply" class="nav-cta">Υποβολή Αίτησης →</a>
