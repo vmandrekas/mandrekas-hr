@@ -81,29 +81,15 @@
     }
 
     .nav-logo {
-      display: flex; align-items: center; gap: 12px;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
     }
 
-    .nav-logo-mark {
-      width: 36px; height: 36px; border-radius: 8px;
-      background: var(--navy);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px; font-weight: 800; color: var(--white);
-      letter-spacing: -0.5px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    .nav-logo-text {
-      display: flex; flex-direction: column; line-height: 1.1;
-    }
-
-    .nav-logo-name {
-      font-size: 15px; font-weight: 700; color: var(--navy); letter-spacing: 0.3px;
-    }
-
-    .nav-logo-sub {
-      font-size: 10px; font-weight: 500; color: var(--ink-muted);
-      letter-spacing: 1.5px; text-transform: uppercase;
+    .nav-logo img {
+      display: block;
+      width: 150px;
+      height: auto;
     }
 
     .nav-right { display: flex; align-items: center; gap: 20px; }
@@ -693,13 +679,9 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <div class="nav-logo-mark">Μ</div>
-    <div class="nav-logo-text">
-      <span class="nav-logo-name">Μανδρέκας ΑΕ</span>
-      <span class="nav-logo-sub">Γαλακτοκομικά · Κόρινθος</span>
-    </div>
-  </div>
+  <a href="https://www.mandrekas.gr" class="nav-logo" target="_blank" rel="noopener noreferrer">
+    <img src="logo_nav.png" alt="Μανδρέκας ΑΕ">
+  </a>
   <div class="nav-right">
     <span class="nav-tag">Ανοιχτή Θέση</span>
     <a href="#apply" class="nav-cta">Υποβολή Αίτησης →</a>
